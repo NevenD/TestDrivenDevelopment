@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RoomBookingApp.Core.Tests
+﻿namespace RoomBookingApp.Core.Tests
 {
     internal class RoomBookingRequestProcessor
     {
@@ -10,7 +8,13 @@ namespace RoomBookingApp.Core.Tests
 
         public RoomBookingResult BookRoom(RoomBookingRequest bookingRequest)
         {
-            throw new NotImplementedException();
+
+            return new RoomBookingResult
+            {
+                FullName = bookingRequest.FullName,
+                Date = bookingRequest.Date,
+                Email = bookingRequest.Email
+            };
         }
     }
 }
