@@ -1,6 +1,9 @@
-﻿namespace RoomBookingApp.Core.Tests
+﻿using RoomBookingApp.Core.Models;
+using System;
+
+namespace RoomBookingApp.Core.Processors
 {
-    internal class RoomBookingRequestProcessor
+    public class RoomBookingRequestProcessor
     {
         public RoomBookingRequestProcessor()
         {
@@ -8,6 +11,11 @@
 
         public RoomBookingResult BookRoom(RoomBookingRequest bookingRequest)
         {
+
+            if (bookingRequest is null)
+            {
+                throw new ArgumentNullException(nameof(bookingRequest));
+            }
 
             return new RoomBookingResult
             {
