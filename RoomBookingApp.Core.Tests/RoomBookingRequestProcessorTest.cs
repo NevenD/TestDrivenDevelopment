@@ -1,6 +1,7 @@
 ﻿using Moq;
 using RoomBookingApp.Core.DataServices;
 using RoomBookingApp.Core.Domain;
+using RoomBookingApp.Core.Enums;
 using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
 using Shouldly;
@@ -94,5 +95,21 @@ namespace RoomBookingApp.Core.Tests
             _roomBookingServiceMock.Verify(r => r.SaveRoom(It.IsAny<RoomBooking>()), Times.Never);
         }
 
+
+        // Example: Data driven tests
+        [Theory]
+        [InlineData(BookingResultFlag.Failure, false)]
+        [InlineData(BookingResultFlag.Success, true)]
+        public void Should_Return_Success_Failure_Flag_In_Result(BookingResultFlag bookingSuccessFlag, bool isAvailable)
+        {
+
+            if (!isAvailable)
+            {
+                _availableRooms.Clear();
+            }
+
+            var result = _processor.BookRoom(_request);
+            bookingSuccessFlag.ShouldBe(result.Flag);
+        }
     }
 }
