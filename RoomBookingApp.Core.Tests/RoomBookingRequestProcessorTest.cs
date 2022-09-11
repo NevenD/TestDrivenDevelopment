@@ -5,6 +5,8 @@ using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
 using Shouldly;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace RoomBookingApp.Core.Tests
@@ -14,6 +16,7 @@ namespace RoomBookingApp.Core.Tests
         private RoomBookingRequestProcessor _processor;
         private RoomBookingRequest _request;
         private Mock<IRoomBookingService> _roomBookingServiceMock;
+        private List<Room> _availableRooms;
 
         public RoomBookingRequestProcessorTest()
         {
@@ -24,8 +27,11 @@ namespace RoomBookingApp.Core.Tests
                 Email = "test@request.com",
                 Date = new DateTime(2021, 10, 20)
             };
+            _availableRooms = new List<Room>() { new Room() { Id = 1 } };
 
             _roomBookingServiceMock = new Mock<IRoomBookingService>();
+            _roomBookingServiceMock.Setup(r => r.GetAvailableRooms(_request.Date))
+                .Returns(_availableRooms);
             _processor = new RoomBookingRequestProcessor(_roomBookingServiceMock.Object);
 
         }
@@ -77,6 +83,16 @@ namespace RoomBookingApp.Core.Tests
             savedBooking.FullName.ShouldBe(_request.FullName);
             savedBooking.Email.ShouldBe(_request.Email);
             savedBooking.Date.ShouldBe(_request.Date);
+            savedBooking.RoomId.ShouldBe(_availableRooms.First().Id);
         }
+
+        [Fact]
+        public void Should_Not_Save_Room_Booking_Request_Id_None_Available()
+        {
+            _availableRooms.Clear();
+            _processor.BookRoom(_request);
+            _roomBookingServiceMock.Verify(r => r.SaveRoom(It.IsAny<RoomBooking>()), Times.Never);
+        }
+
     }
 }
