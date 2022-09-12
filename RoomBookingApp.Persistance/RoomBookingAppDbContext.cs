@@ -3,15 +3,15 @@ using RoomBookingApp.Core.Domain;
 
 namespace RoomBookingApp.Persistance
 {
-    internal sealed class RoomBookingAppDbContext : DbContext
+    public sealed class RoomBookingAppDbContext : DbContext
     {
-
         public RoomBookingAppDbContext(DbContextOptions<RoomBookingAppDbContext> options) : base(options)
         {
         }
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomBooking> RoomBookings { get; set; }
+        public DbContextOptions<RoomBookingAppDbContext> Options { get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

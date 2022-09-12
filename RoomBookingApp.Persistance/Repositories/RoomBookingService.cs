@@ -7,6 +7,13 @@ namespace RoomBookingApp.Persistance.Repositories
 {
     public sealed class RoomBookingService : IRoomBookingService
     {
+        private readonly RoomBookingAppDbContext _dbContext;
+        public RoomBookingService(RoomBookingAppDbContext context)
+        {
+            _dbContext = context;
+        }
+
+
         public IEnumerable<Room> GetAvailableRooms(DateTime date)
         {
             throw new NotImplementedException();
