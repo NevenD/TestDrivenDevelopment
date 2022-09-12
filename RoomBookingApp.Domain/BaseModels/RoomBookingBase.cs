@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RoomBookingApp.Core.Models
+namespace RoomBookingApp.Domain.BaseModels
 {
     /// <summary>
     /// We don't want to create an instance from Room booking base class so we add abstract
