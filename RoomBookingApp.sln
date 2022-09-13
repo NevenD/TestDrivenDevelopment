@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Core.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Core", "RoomBookingApp.Core\RoomBookingApp.Core.csproj", "{FDD3D5B2-3435-4495-A9BF-FA566016D3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Domain", "RoomBookingApp.Domain\RoomBookingApp.Domain.csproj", "{57F23529-F05D-4F25-A8F4-413250D78E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Domain", "RoomBookingApp.Domain\RoomBookingApp.Domain.csproj", "{57F23529-F05D-4F25-A8F4-413250D78E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Persistance", "RoomBookingApp.Persistance\RoomBookingApp.Persistance.csproj", "{216DBFB0-7C68-4153-9F50-123B4D73485E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Persistance", "RoomBookingApp.Persistance\RoomBookingApp.Persistance.csproj", "{216DBFB0-7C68-4153-9F50-123B4D73485E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Persistance.Tests", "RoomBookingApp.Persistance.Tests\RoomBookingApp.Persistance.Tests.csproj", "{35D88048-AC8C-43DF-800D-77FE544D7C48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingApp.Persistance.Tests", "RoomBookingApp.Persistance.Tests\RoomBookingApp.Persistance.Tests.csproj", "{35D88048-AC8C-43DF-800D-77FE544D7C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingApp.Api", "RoomBookingApp.Api\RoomBookingApp.Api.csproj", "{A73C2189-31DA-4EAA-9629-9323E4F3AE13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{35D88048-AC8C-43DF-800D-77FE544D7C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35D88048-AC8C-43DF-800D-77FE544D7C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35D88048-AC8C-43DF-800D-77FE544D7C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73C2189-31DA-4EAA-9629-9323E4F3AE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73C2189-31DA-4EAA-9629-9323E4F3AE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73C2189-31DA-4EAA-9629-9323E4F3AE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73C2189-31DA-4EAA-9629-9323E4F3AE13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
