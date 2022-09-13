@@ -2,6 +2,7 @@
 using RoomBookingApp.Core.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RoomBookingApp.Persistance.Repositories
 {
@@ -16,12 +17,14 @@ namespace RoomBookingApp.Persistance.Repositories
 
         public IEnumerable<Room> GetAvailableRooms(DateTime date)
         {
-            throw new NotImplementedException();
+            var availableRooms = _dbContext.Rooms.Where(r => !r.RoomBookings.Any(x => x.Date == date)).ToList();
+            return availableRooms;
         }
 
         public void SaveRoom(RoomBooking roomBooking)
         {
-            throw new NotImplementedException();
+            _dbContext.Add(roomBooking);
+            _dbContext.SaveChanges();
         }
     }
 }

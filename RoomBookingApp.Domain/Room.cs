@@ -1,8 +1,11 @@
-﻿namespace RoomBookingApp.Core.Domain
+﻿using System.Collections.Generic;
+
+namespace RoomBookingApp.Core.Domain
 {
-    public sealed class Room
+    public class Room
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<RoomBooking> RoomBookings { get; set; }
     }
 }
