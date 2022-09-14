@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using RoomBookingApp.Core.Processors;
 using RoomBookingApp.Persistance;
 
 namespace RoomBookingApp.Api
@@ -24,6 +25,7 @@ namespace RoomBookingApp.Api
         {
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RoomBookingApp.Api", Version = "v1" });
@@ -34,6 +36,8 @@ namespace RoomBookingApp.Api
             conn.Open();
 
             services.AddDbContext<RoomBookingAppDbContext>(o => o.UseSqlite(conn));
+            services.AddScoped<IRoomBookingRequestProcessor, RoomBookingRequestProcessor>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

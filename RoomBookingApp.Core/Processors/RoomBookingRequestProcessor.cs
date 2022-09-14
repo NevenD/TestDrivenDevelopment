@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace RoomBookingApp.Core.Processors
 {
-    public class RoomBookingRequestProcessor
+    public class RoomBookingRequestProcessor : IRoomBookingRequestProcessor
     {
 
         public readonly IRoomBookingService _roomBookingService;
