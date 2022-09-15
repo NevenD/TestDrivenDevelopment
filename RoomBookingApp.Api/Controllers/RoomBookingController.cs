@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RoomBookingApp.Core.Enums;
 using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
-using System;
 using System.Threading.Tasks;
 
 namespace RoomBookingApp.Api.Controllers
@@ -17,9 +17,21 @@ namespace RoomBookingApp.Api.Controllers
             _roomBookingRequestProcessor = roomBookingRequestProcessort;
         }
 
+        [HttpPost]
         public async Task<IActionResult> BookRoom(RoomBookingRequest request)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                var result = _roomBookingRequestProcessor.BookRoom(request);
+
+                if (result.Flag == BookingResultFlag.Success)
+                {
+                    return Ok(result);
+                }
+
+                ModelState.AddModelError(nameof(RoomBookingRequest.Date), "No rooms available for given date");
+            }
+            return BadRequest(ModelState);
         }
     }
 }
